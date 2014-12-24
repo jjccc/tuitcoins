@@ -1,0 +1,46 @@
+<hr>
+<div class="row no-horizontal-margin">
+  <div class="col-md-8 no-horizontal-padding">
+    <div class="row no-horizontal-margin">
+      <div class="col-md-8 no-horizontal-padding">
+        <a href="<%= campaign.plan_link %>" target="_blank">
+          <h4><%= campaign.plan_name %></h4>
+        </a>
+      </div>
+      <div class="col-md-4 no-horizontal-padding">
+        <h4><%= campaign.category_name %></h4>
+      </div>
+    </div>
+    <div class="row no-horizontal-margin">
+      <div class="col-md-12 no-horizontal-padding">
+        <h6><%= campaign.impressions_label %></p>
+      </div>
+    </div>
+    <div class="row no-horizontal-margin">
+      <div class="col-md-12 no-horizontal-padding">
+        <h6 class="text-muted"><%= campaign.plan_tweet %></p>
+      </div>
+    </div>
+    <div class="row no-horizontal-margin">
+      <div class="col-md-12 no-horizontal-padding">
+        <h6 class="text-muted"><%= campaign.periodicity %></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-1">
+    <a class="btn btn-primary btn-sm" href="<%= edit_campaign_path(campaign.id) %>">
+      <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="col-md-1">
+    <%= link_to campaign_path(campaign.id), :method => :delete, :class => "btn btn-primary btn-sm" do %>
+      <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+    <% end %>
+  </div>
+  <div class="col-md-2">
+    <%= link_to status_label(campaign.is_active), 
+                campaign_path(campaign.id, { :is_active =>  !campaign.is_active }), 
+                :method => :put,
+                :class => "btn #{status_class(campaign.is_active)} btn-sm" %>
+  </div>
+</div>

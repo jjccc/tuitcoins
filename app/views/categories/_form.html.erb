@@ -1,0 +1,14 @@
+<%= form_for(@category, :url => @form_path, :html => { :role => "form"}) do |f| %>   
+  <div class="col-md-12 no-horizontal-margin">
+    <div id="form-group-name" class="form-group no-horizontal-padding">
+      <%= f.text_field :name, :maxlength => 150, :class => "form-control input-lg", :placeholder => "Nombre de la categoría" %>
+    </div>
+  </div>
+
+  <div class="col-md-12 no-horizontal-margin">
+    <div class="form-group no-horizontal-padding">
+      <button type="submit" class="btn btn-primary btn-lg">Guardar</button>              
+      <a class="btn btn-warning btn-lg" href="<%= categories_path %>">Cancelar</a>
+    </div>
+  </div>
+<% end %>

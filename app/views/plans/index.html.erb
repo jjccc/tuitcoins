@@ -1,0 +1,16 @@
+<div class="row no-horizontal-margin">
+  <div class="col-md-6 no-horizontal-padding">    
+    <h3><%= number_with_delimiter(@plans_count) %> <%= plans_label(@plans_count) %></h3>
+  </div>
+  <div class="col-md-6 no-horizontal-padding right">
+    <h3>
+      <a class="btn btn-warning" href="<%= new_plan_path %>">Nuevo plan</a>
+    </h3>
+  </div>
+</div>
+
+<%= render @plans %>
+
+<div id="paginator">
+  <%= paginate @paginable_plans %>
+</div>  

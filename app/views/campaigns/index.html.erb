@@ -1,0 +1,16 @@
+<div class="row no-horizontal-margin">
+  <div class="col-md-6 no-horizontal-padding">    
+    <h3><%= number_with_delimiter(@campaigns_count) %> <%= campaigns_label(@campaigns_count) %></h3>
+  </div>
+  <div class="col-md-6 no-horizontal-padding right">
+    <h3>
+      <a class="btn btn-warning" href="<%= new_campaign_path %>">Nueva campaña</a>
+    </h3>
+  </div>
+</div>
+
+<%= render @campaigns %>
+
+<div id="paginator">
+  <%= paginate @paginable_campaigns %>
+</div>  

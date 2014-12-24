@@ -1,0 +1,24 @@
+<%= form_for(@campaign, :url => @form_path, :html => { :role => "form" }) do |f| %>   
+  <div class="col-md-12 no-horizontal-margin">
+    <div id="form-group-plan" class="form-group form-group-lg no-horizontal-padding">
+      <%= collection_select(:campaign, :plan_id, @plans, :id, :name, {:include_blank => "(Selecciona un plan)"}, {:class => "form-control"}) %>
+    </div>
+  </div>
+  
+  <div class="form-inline col-md-12 no-horizontal-margin">
+    <div class="col-md-12 form-group no-horizontal-padding">
+      Cada <%= f.text_field :period, :maxlength => 3, :class => "form-control" %>
+    
+      <%= collection_select(:campaign, :unity, @unities, :id, :name, {:include_blank => "(periodo)"}, {:class => "form-control"}) %>
+   
+      empezando a las <%= f.text_field :start_at, :maxlength => 8, :class => "form-control", :value => @campaign.ui_start_at %><br><br>
+    </div>
+  </div>
+  
+  <div class="col-md-12 no-horizontal-margin">
+    <div class="form-group no-horizontal-padding">
+      <button type="submit" class="btn btn-primary btn-lg">Guardar</button>              
+      <a class="btn btn-warning btn-lg" href="<%= campaigns_path %>">Cancelar</a>
+    </div>
+  </div>
+<% end %>

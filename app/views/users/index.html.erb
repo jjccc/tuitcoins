@@ -1,0 +1,21 @@
+<div class="row jumbotron no-horizontal-margin">
+  <div class="col-md-6">    
+    <center>
+      <h1><%= number_with_delimiter(@users_count) %></h1>
+      <h3><%= users_label(@users_count) %></h3>
+    </center>
+  </div>
+  <div class="col-md-6">
+    <center>
+      <h1><%= number_with_delimiter(@followers_count) %></h1>
+      <h3><%= followers_label(@followers_count) %></h3>
+    </center>
+  </div>
+</div>
+
+<%= render @users %>
+
+<div id="paginator">
+  <%= paginate @paginable_users %>
+</div>  
+ 

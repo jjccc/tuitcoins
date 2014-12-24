@@ -1,0 +1,16 @@
+<div class="row no-horizontal-margin">
+  <div class="col-md-6 no-horizontal-padding">    
+    <h3><%= number_with_delimiter(@categories_count) %> <%= categories_label(@categories_count) %></h3>
+  </div>
+  <div class="col-md-6 no-horizontal-padding right">
+    <h3>
+      <a class="btn btn-warning" href="<%= new_category_path %>">Nueva categoría</a>
+    </h3>
+  </div>
+</div>
+
+<%= render @categories %>
+
+<div id="paginator">
+  <%= paginate @paginable_categories %>
+</div>  

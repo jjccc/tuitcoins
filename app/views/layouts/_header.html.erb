@@ -1,0 +1,28 @@
+<div class="header no-horizontal-margin">
+  <div class="col-lg-12 no-horizontal-padding">
+    <div class="col-lg-5 logo">
+      <div class="row">
+        <a alt="tuitcoins.com" title="tuitcoins.com" class="logo" href="<%= root_path %>">tuitcoins.com</a>
+      </div>
+      <div class="row claim">
+        Saca partido a tu timeline
+      </div>
+    </div>
+    <div class="col-lg-7 no-horizontal-padding main-bar">
+      <ul class="nav nav-pills no-horizontal-margin pull-right">
+        <li class="<%= "active" if params[:controller] == "users" %>">
+          <a alt="Usuarios" title="Usuarios" href="<%= users_path %>">Usuarios</a><br>        
+        </li>
+        <li class="<%= "active" if params[:controller] == "categories" %>">
+          <a alt="Categorías" title="Categorías" href="<%= categories_path %>">Categorías</a><br>        
+        </li>
+        <li class="<%= "active" if params[:controller] == "plans" %>">
+          <a alt="Planes" title="Planes" href="<%= plans_path %>">Planes</a>
+        </li>
+        <li class="<%= "active" if params[:controller] == "campaigns" %>">
+          <a alt="Campañas" title="Campañas" href="<%= campaigns_path %>">Campañas</a>
+        </li>
+      </ul>
+    </div>   
+  </div>
+</div>

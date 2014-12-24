@@ -1,0 +1,33 @@
+<%= form_for(@plan, :url => @form_path, :html => { :role => "form"}) do |f| %>   
+  <div class="col-md-12 no-horizontal-margin">
+    <div id="form-group-name" class="form-group no-horizontal-padding">
+      <%= f.text_field :name, :maxlength => 250, :class => "form-control input-lg", :placeholder => "Nombre del plan" %>
+    </div>
+  </div>
+  
+  <div class="col-md-12 no-horizontal-margin">
+    <div id="form-group-category" class="form-group no-horizontal-padding">
+      <%= collection_select(:plan, :category_id, @categories, :id, :name, {:include_blank => "(Selecciona una categoría)"}, {:class => "form-control"}) %>
+    </div>
+  </div>
+  
+  <div class="col-md-12 no-horizontal-margin">
+    <div id="form-group-link" class="form-group no-horizontal-padding">
+      <%= f.text_field :link, :maxlength => 250, :class => "form-control input-lg", :placeholder => "Link del plan" %>
+    </div>
+  </div>
+
+  <div class="col-md-12 no-horizontal-margin">
+    <div id="form-group-tweet" class="form-group no-horizontal-padding">
+      <%= f.text_field :tweet, :maxlength => 140, :class => "form-control input-lg", :placeholder => "Texto del tuit" %>
+    </div>
+  </div>
+  
+  <div class="col-md-12 no-horizontal-margin">
+    <div class="form-group no-horizontal-padding">
+      <button type="submit" class="btn btn-primary btn-lg">Guardar</button>              
+      <a class="btn btn-warning btn-lg" href="<%= plans_path %>">Cancelar</a>
+    </div>
+  </div>
+<% end %>
+

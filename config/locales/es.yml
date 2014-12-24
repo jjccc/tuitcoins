@@ -1,0 +1,51 @@
+es:
+  number:
+    format:
+      delimiter: '.'
+      separator: ','
+  date:
+    formats:
+      default: "%d/%m/%Y"
+  datetime:
+    distance_in_words:
+      half_a_minute: "Falta medio minuto"
+      less_than_x_seconds:
+        one:   "Falta menos de 1 segundo"
+        other: "Faltan menos de %{count} segundos"
+      x_seconds:
+        one:   "Falta 1 segundo"
+        other: "Faltan %{count} segundos"
+      less_than_x_minutes:
+        one:   "Falta menos de 1 minuto"
+        other: "Faltan menos de %{count} minuto"
+      x_minutes:
+        one:   "Falta 1 minuto"
+        other: "Faltan %{count} minutos"
+      about_x_hours:
+        one:   "Falta 1 hora"
+        other: "Faltan %{count} horas"
+      x_days:
+        one:   "Falta 1 día"
+        other: "Faltan %{count} días"
+      about_x_months:
+        one:   "Falta 1 mes"
+        other: "Faltan %{count} meses"
+      x_months:
+        one:   "Falta 1 mes"
+        other: "Faltan %{count} meses"
+      about_x_years:
+        one:   "Falta 1 año"
+        other: "Faltan %{count} años"
+      over_x_years:
+        one:   "Falta más de 1 año"
+        other: "Faltan más de %{count} años"
+      almost_x_years:
+        one:   "Falta casi 1 año"
+        other: "Faltan  casi %{count} años"
+  views:
+    pagination:
+      first: "&laquo; Primera"
+      last: "Última &raquo;"
+      previous: "&lsaquo; Anterior"
+      next: "Siguiente &rsaquo;"
+      truncate: "..."
