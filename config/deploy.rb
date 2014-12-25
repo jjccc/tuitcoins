@@ -141,7 +141,7 @@ namespace :deploy do
     desc "Create Production Database"
     task :create do
       puts "\n\n=== Creating the Production Database! ===\n\n"
-      run "cd #{release_path}; rake db:create RAILS_ENV=production"
+      run "su thealarmfactory;cd #{release_path}; rake db:create RAILS_ENV=production;exit"
       system "cap deploy:set_permissions"
     end
 
