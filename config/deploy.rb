@@ -7,7 +7,7 @@ set :repository,  "git@github.com:jjccc/tuitcoins.git"
 
 set :scm, :git
 default_run_options[:pty] = true
-set :user, "root"
+set :user, "thealarmfactory"
 set :domain, "tuitcoins.com"
 set :use_sudo, false
 
