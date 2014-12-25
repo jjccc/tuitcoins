@@ -141,7 +141,7 @@ namespace :deploy do
     desc "Create Production Database"
     task :create do
       puts "\n\n=== Creating the Production Database! ===\n\n"
-      run "su thealarmfactory;cd #{release_path}; rake db:create RAILS_ENV=production;exit"
+      run "cd #{release_path}; rake db:create RAILS_ENV=production"
       system "cap deploy:set_permissions"
     end
 
@@ -303,5 +303,5 @@ end
 # Callbacks
 after 'deploy:setup', 'deploy:setup_shared_path'
 after 'deploy:finalize_update', 'deploy:db:sync_yaml', 'deploy:secret_token', 'deploy:twitter', 'deploy:credential', 'deploy:setup_symlinks'
-after 'deploy:finalize_update', 'deploy:db:create', 'deploy:db:migrate', "deploy:precompile"
+after 'deploy:finalize_update', 'deploy:db:migrate', "deploy:precompile"
 after 'deploy:create_symlink', "deploy:tmp_permissions"
