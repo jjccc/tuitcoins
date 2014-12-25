@@ -294,9 +294,13 @@ DocumentRoot #{File.join(deploy_to, 'current', 'public')}
     system "rsync -vr --exclude='.DS_Store' config/initializers/twitter.rb #{user}@#{remote_host}:#{release_path}/config/initializers/"
   end
   
+  task :credential, :role => :app do
+    system "rsync -vr --exclude='.DS_Store' config/initializers/credential.rb #{user}@#{remote_host}:#{release_path}/config/initializers/"
+  end
+  
 end
 
 # Callbacks
 after 'deploy:setup', 'deploy:setup_shared_path'
-after 'deploy:finalize_update', 'deploy:db:sync_yaml', 'deploy:secret_token', 'deploy:twitter', 'deploy:db:migrate', "deploy:precompile"
+after 'deploy:finalize_update', 'deploy:db:sync_yaml', 'deploy:secret_token', 'deploy:twitter', 'deploy:credential', 'deploy:db:migrate', "deploy:precompile"
 after 'deploy:create_symlink', "deploy:tmp_permissions"

@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   
   def authenticate
     authenticate_or_request_with_http_basic do |user_name, password|
-      user_name == "themafias" && password == "kkapps"
+      user_name == Tuitcoins::Application.config.http_user && password == Tuitcoins::Application.config.http_password
     end
   end
   
