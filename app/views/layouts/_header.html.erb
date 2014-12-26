@@ -10,18 +10,24 @@
     </div>
     <div class="col-lg-7 no-horizontal-padding main-bar">
       <ul class="nav nav-pills no-horizontal-margin pull-right">
-        <li class="<%= "active" if params[:controller] == "users" %>">
-          <a alt="Usuarios" title="Usuarios" href="<%= users_path %>">Usuarios</a><br>        
-        </li>
-        <li class="<%= "active" if params[:controller] == "categories" %>">
-          <a alt="Categorías" title="Categorías" href="<%= categories_path %>">Categorías</a><br>        
-        </li>
-        <li class="<%= "active" if params[:controller] == "plans" %>">
-          <a alt="Planes" title="Planes" href="<%= plans_path %>">Planes</a>
-        </li>
-        <li class="<%= "active" if params[:controller] == "campaigns" %>">
-          <a alt="Campañas" title="Campañas" href="<%= campaigns_path %>">Campañas</a>
-        </li>
+        <% if session[:user_id].blank? %>
+          <li class="<%= "active" if params[:controller] == "users" %>">
+            <a alt="Usuarios" title="Usuarios" href="<%= users_path %>">Usuarios</a><br>        
+          </li>
+          <li class="<%= "active" if params[:controller] == "categories" %>">
+            <a alt="Categorías" title="Categorías" href="<%= categories_path %>">Categorías</a><br>        
+          </li>
+          <li class="<%= "active" if params[:controller] == "plans" %>">
+            <a alt="Planes" title="Planes" href="<%= plans_path %>">Planes</a>
+          </li>
+          <li class="<%= "active" if params[:controller] == "campaigns" %>">
+            <a alt="Campañas" title="Campañas" href="<%= campaigns_path %>">Campañas</a>
+          </li>
+        <% else %>
+          <li>
+            <a alt="Salir" title="Salir" href="<%= logout_path %>">Salir</a><br>        
+          </li>
+        <% end %>
       </ul>
     </div>   
   </div>

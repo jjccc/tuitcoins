@@ -2,8 +2,9 @@ class CampaignsController < ApplicationController
   
   # GET /campaigns
   def index
-    @campaigns_count = Campaign.where(:is_default => true).count
-    @paginable_campaigns = Campaign.where(:is_default => true).order(:start_at).page(params[:page])
+    campaigns = current_user.nil? ? Campaign.where(:user_id => nil, :is_default => true) : current_user.campaigns
+    @campaigns_count = campaigns.count
+    @paginable_campaigns = campaigns.order(:start_at).page(params[:page])
     @campaigns = CampaignDecorator.decorate_collection(@paginable_campaigns)
   end
 
@@ -36,6 +37,11 @@ class CampaignsController < ApplicationController
   # POST /campaigns
   def create
     @campaign = Campaign.new(params[:campaign])
+    
+    @campaign.user_id = current_user.id unless current_user.nil? 
+    @campaign.is_active = false
+    @campaign.is_default = @campaign.user_id.nil?
+    
 
     respond_to do |format|
       if @campaign.save

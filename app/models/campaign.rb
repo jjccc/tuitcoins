@@ -8,9 +8,7 @@ class Campaign < ActiveRecord::Base
   
   paginates_per 10
   
-  def default_values
-    self.is_active = false
-    self.is_default = true
+  def default_values    
     self.impressions = 0
   end
   
@@ -45,7 +43,7 @@ class Campaign < ActiveRecord::Base
   
   def publish
     # Tuitea la campaña en el timeline del usuario.
-    TwitterAccess.new(self.user).update(self.plan.decorate.tweet)
+    TwitterAccess.new(self.user).update(self.plan.decorate.tweet) if Rails.env.production?
     
     # Reprograma el siguiente tuit.
     self.delay(:run_at => DateTime.now + self.offset).publish

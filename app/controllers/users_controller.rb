@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :current_user
 
   # GET /users
   def index
@@ -12,5 +13,15 @@ class UsersController < ApplicationController
   def new
     render :layout => false
   end
-
+  
+  # GET /users/1
+  def show
+    @campaigns = current_user.campaigns
+    
+    @campaigns_count = current_user.campaigns.count
+    @paginable_campaigns = current_user.campaigns.order(:start_at).page(params[:page])
+    @campaigns = CampaignDecorator.decorate_collection(@paginable_campaigns)
+    render "campaigns/index"
+  end
+  
 end
