@@ -3,5 +3,5 @@ class Category < ActiveRecord::Base
   
   has_many :plans
   
-  paginates_per 1
+  paginates_per 10
 end

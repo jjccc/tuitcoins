@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   
   has_many :campaigns
   
-  paginates_per 1
+  paginates_per 10
   
   def self.scope
     User.all.map(&:followers).reduce(:+) || 0

@@ -6,6 +6,8 @@ class Campaign < ActiveRecord::Base
   
   before_create :default_values
   
+  paginates_per 10
+  
   def default_values
     self.is_active = false
     self.is_default = true

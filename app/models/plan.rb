@@ -4,5 +4,5 @@ class Plan < ActiveRecord::Base
   belongs_to :category
   has_many :campaigns
   
-  paginates_per 1
+  paginates_per 10
 end
