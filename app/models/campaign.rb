@@ -43,7 +43,7 @@ class Campaign < ActiveRecord::Base
   
   def publish
     # Tuitea la campaña en el timeline del usuario.
-    self.twitter.update(self.plan.decorate.tweet)
+    TwitterAccess.new(self.user).update(self.plan.decorate.tweet)
     
     # Reprograma el siguiente tuit.
     self.delay(:run_at => DateTime.now + self.offset).publish
@@ -58,14 +58,4 @@ class Campaign < ActiveRecord::Base
     eval("#{self.period}.#{units[self.unity - 1]}")
   end
   
-  private 
-  
-  def twitter
-    Twitter::REST::Client.new do |config|
-      config.consumer_key        = Tuitcoins::Application.config.twitter_consumer_key
-      config.consumer_secret     = Tuitcoins::Application.config.twitter_consumer_secret
-      config.access_token        = self.user.oauth_token
-      config.access_token_secret = self.user.oauth_secret
-    end
-  end
 end

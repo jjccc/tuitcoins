@@ -291,7 +291,7 @@ DocumentRoot #{File.join(deploy_to, 'current', 'public')}
   end
   
   task :twitter, :role => :app do
-    system "rsync -vr --exclude='.DS_Store' config/initializers/twitter.rb #{user}@#{remote_host}:#{release_path}/config/initializers/"
+    system "rsync -vr --exclude='.DS_Store' config/initializers/000_twitter.rb #{user}@#{remote_host}:#{release_path}/config/initializers/"
   end
   
   task :credential, :role => :app do
