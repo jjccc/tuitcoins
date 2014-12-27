@@ -1,5 +1,5 @@
 Tuitcoins::Application.routes.draw do
-  resources :users, :only => [:index, :new, :show]
+  resources :users, :only => [:index, :show]
 
   resources :campaigns, :except => [:show]
 
@@ -8,6 +8,7 @@ Tuitcoins::Application.routes.draw do
   resources :categories, :except => [:show]
   
   match "/auth/:provider/callback" => "sessions#create"
+  match "/login" => "sessions#new", :as => "login"
   match "/logout" => "sessions#destroy", :as => "logout"
 
   root :to => 'users#index'

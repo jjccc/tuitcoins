@@ -8,11 +8,6 @@ class UsersController < ApplicationController
     @users = UserDecorator.decorate_collection(@paginable_users)
   end
   
-  # GET /users/new
-  def new
-    render :layout => false
-  end
-  
   # GET /users/1
   def show
     @campaigns = current_user.campaigns

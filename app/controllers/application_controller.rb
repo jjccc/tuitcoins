@@ -18,13 +18,13 @@ class ApplicationController < ActionController::Base
       render(:file => 'public/500.html', :status => :forbidden, :layout => false) if user_not_granted?
     end
   end
-  
+
   private 
   
   def user_not_granted?
     ["users", "sessions", "campaigns"].exclude?(params[:controller]) ||
     (params[:controller] == "users"  && ["show"].exclude?(params[:action])) ||
-    (params[:controller] == "sessions"  && ["destroy"].exclude?(params[:action]))
+    (params[:controller] == "sessions"  && ["create"].include?(params[:action]))
   end
 
   
