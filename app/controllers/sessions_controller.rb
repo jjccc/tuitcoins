@@ -2,8 +2,11 @@ class SessionsController < ApplicationController
 
   def create 
     auth = request.env["omniauth.auth"]  
-    user = User.find_by_uid(auth["uid"]) || User.create_with_omniauth(auth)
-    user.create_default_campaigns
+    user = User.find_by_uid(auth["uid"]) 
+    if user.nil? 
+      user.User.create_with_omniauth(auth)
+      user.create_default_campaigns
+    end
     session[:user_id] = user.id
     redirect_to user_url(user.id), :layout => "application"
   end
