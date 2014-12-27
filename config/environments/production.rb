@@ -31,8 +31,7 @@ Tuitcoins::Application.configure do
   # config.force_ssl = true
 
   # See everything in the log (default is :info)
-  config.log_level = :info
-  RAILS_DEFAULT_LOGGER = Logger.new('log/production.log')
+  # config.log_level = :debug
 
   # Prepend all log lines with the following tags
   # config.log_tags = [ :subdomain, :uuid ]
