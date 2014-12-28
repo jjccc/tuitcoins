@@ -93,3 +93,7 @@
 .inner {
   padding: 30px;
 }
+
+.btn-cta {
+  font-size: 32px !important;
+}
