@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
     user = User.find_by_uid_and_app_id(auth["uid"], @app.id) 
     if user.nil? 
       user = User.create_with_omniauth(auth, @app)
-      user.create_default_campaigns
+      #user.create_default_campaigns
     end
     session[:user_id] = user.id
     redirect_to user_url(user.id), :layout => "application"
