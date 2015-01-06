@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141226001917) do
+ActiveRecord::Schema.define(:version => 20150103120630) do
+
+  create_table "apps", :force => true do |t|
+    t.string   "name",            :null => false
+    t.string   "consumer_key",    :null => false
+    t.string   "consumer_secret", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.string   "subdomain"
+  end
 
   create_table "campaigns", :force => true do |t|
     t.integer  "user_id"
@@ -60,12 +69,13 @@ ActiveRecord::Schema.define(:version => 20141226001917) do
   create_table "users", :force => true do |t|
     t.string   "name"
     t.integer  "followers"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
     t.string   "oauth_token"
     t.string   "oauth_secret"
     t.string   "uid"
     t.string   "picture"
+    t.integer  "app_id",       :default => 1, :null => false
   end
 
 end

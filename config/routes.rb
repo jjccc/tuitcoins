@@ -7,8 +7,9 @@ Tuitcoins::Application.routes.draw do
 
   resources :categories, :except => [:show]
   
-  match "/auth/:provider/callback" => "sessions#create"
-  match "/login" => "sessions#new", :as => "login"
+  match "/auth/:provider/callback" => "sessions#callback"
+  match "/numberaffinity" => "sessions#numberaffinity", :as => "numberaffinity"
+  match "/cloudtag" => "sessions#cloudtag", :as => "cloudtag"
   match "/logout" => "sessions#destroy", :as => "logout"
 
   root :to => 'users#index'
