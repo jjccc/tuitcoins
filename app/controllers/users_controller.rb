@@ -10,13 +10,27 @@ class UsersController < ApplicationController
   end
   
   # GET /users/1
-  def show
-    @campaigns = current_user.campaigns
+  def show    
+    @user = User.find_by_id(params[:id])
     
-    @campaigns_count = current_user.campaigns.count
-    @paginable_campaigns = current_user.campaigns.order(:start_at).page(params[:page])
-    @campaigns = CampaignDecorator.decorate_collection(@paginable_campaigns)
-    render "campaigns/index"
+    # Only the current user's page can be shown. 
+    if @user.nil? || current_user.nil? || current_user.id != @user.id
+      forbid
+    else
+      # Dynamically we create an app and run it.
+      # After this, show the results.
+      subdomain = @user.app.subdomain
+      @app = eval(subdomain.capitalize).new
+      @app.run(@user)
+      render "#{subdomain}/show"
+    end
+    
+    # @campaigns = current_user.campaigns
+    
+    # @campaigns_count = current_user.campaigns.count
+    # @paginable_campaigns = current_user.campaigns.order(:start_at).page(params[:page])
+    # @campaigns = CampaignDecorator.decorate_collection(@paginable_campaigns)
+    # render "campaigns/index"
   end
   
 end

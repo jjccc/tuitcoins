@@ -15,8 +15,12 @@ class ApplicationController < ActionController::Base
   
   def verify_admin_access
     unless current_user.nil?
-      render(:file => 'public/500.html', :status => :forbidden, :layout => false) if user_not_granted?
+       forbid if user_not_granted?
     end
+  end
+  
+  def forbid
+    render(:file => 'public/500.html', :status => :forbidden, :layout => false)
   end
 
   private 
