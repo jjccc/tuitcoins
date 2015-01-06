@@ -1,16 +1,24 @@
 <div class="row jumbotron no-horizontal-margin">
-  <div class="col-md-6">    
-    <center>
-      <h1><%= number_with_delimiter(@users_count) %></h1>
-      <h3><%= users_label(@users_count) %></h3>
-    </center>
+  <div class="row">
+    <div class="col-md-4">    
+      <center>
+        <h1><%= number_with_delimiter(@users_count) %></h1>
+        <h3><%= users_label(@users_count) %></h3>
+      </center>
+    </div>
+    <div class="col-md-4 total-label">
+      <center>
+        <h3>TOTAL</h3>
+      </center>
+    </div>
+    <div class="col-md-4">
+      <center>
+        <h1><%= number_with_delimiter(@scope) %></h1>
+        <h3><%= followers_label(@scope) %></h3>
+      </center>
+    </div>
   </div>
-  <div class="col-md-6">
-    <center>
-      <h1><%= number_with_delimiter(@scope) %></h1>
-      <h3><%= followers_label(@scope) %></h3>
-    </center>
-  </div>
+  <%= render @apps %>
 </div>
 
 <%= render @users %>
