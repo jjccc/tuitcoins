@@ -9,8 +9,13 @@ class SessionsController < ApplicationController
   end
   
   def destroy
-    session[:user_id] = nil
-    render "new", :layout => "login"
+    if current_user.nil?
+      forbid
+    else
+      landing_view = current_user.app.subdomain
+      session[:user_id] = nil
+      render landing_view, :layout => "login"
+    end
   end
   
   def callback
@@ -21,14 +26,16 @@ class SessionsController < ApplicationController
   private 
   
   def create_user
+    is_user_just_created = false
     auth = request.env["omniauth.auth"]
     user = User.find_by_uid_and_app_id(auth["uid"], @app.id) 
     if user.nil? 
+      is_user_just_created = true
       user = User.create_with_omniauth(auth, @app)
       #user.create_default_campaigns
     end
     session[:user_id] = user.id
-    redirect_to user_url(user.id), :layout => "application"
+    redirect_to user_url(user.id, {:just_created => is_user_just_created}), :layout => "application"
   end
   
 end

@@ -1,1 +1,47 @@
-<%= @app.test %>
+<div class="row jumbotron no-horizontal-margin">
+  <div class="row">
+    <div class="col-md-6">    
+      <center>
+        <h4>Número mágico</h4>
+        <h1><%= number_with_delimiter(@app.user_number) %></h1>        
+      </center>
+    </div>
+    <div class="col-md-6">
+      <center>
+        <h4>Grado de afinidad</h4>
+        <h1><%= number_with_delimiter(@app.affinity) %>%</h1>
+      </center>
+    </div>
+  </div>
+</div>
+
+<% if @must_show_social_buttons %>
+  <div class="row no-horizontal-margin">
+    <a href="#" class="btn btn-primary btn-lg btn-block btn-cta" remote="true">Comparte el resultado en Twitter</a>
+  </div>
+  <br><br>
+<% end %>
+
+<% unless @app.affined_followers.blank? %>
+  <div class="row no-horizontal-margin">
+    <h3>Tus seguidores más afines son:</h3>
+  </div>
+
+  <% @app.affined_followers.each do |follower| %>
+    <div class="row no-horizontal-margin">
+      <div class="col-md-1">
+        <img class="profile" src="<%= follower.picture %>">
+      </div>
+      <div class="col-md-5">
+        <a href="<%= "http://twitter.com/#{follower.nick}" %>" target="_blank">
+          <h4><%= follower.name %></h4>
+        </a>
+      </div>
+      <div class="col-md-3 right">
+        <h4><%= number_with_delimiter(follower.value) %></h4>
+      </div>
+    </div>
+    <hr>
+  <% end %>
+
+<% end %>

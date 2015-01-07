@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
       user.oauth_token = auth["credentials"]["token"]
       user.oauth_secret = auth["credentials"]["secret"]
       user.picture = auth["info"]["image"]
-      user.followers = TwitterAccess.new(app, user).client.user(auth["info"]["nickname"]).followers_count
+      user.followers = TwitterAccess.new(app, user).client.user(auth["info"]["nickname"]).followers_count      
     end 
   end
   

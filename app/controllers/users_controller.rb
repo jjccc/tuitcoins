@@ -20,9 +20,15 @@ class UsersController < ApplicationController
       # Dynamically we create an app and run it.
       # After this, show the results.
       subdomain = @user.app.subdomain
-      @app = eval(subdomain.capitalize).new
-      @app.run(@user)
-      render "#{subdomain}/show"
+      @app = eval(subdomain.capitalize).find_by_id(@user.app.id)
+      if @app.nil?
+        forbid
+      else
+        @app.run(@user)
+        @app.tweet if params[:just_created].present? && params[:just_created] == "true"
+        @must_show_social_buttons = params[:just_created].present? && params[:just_created] == "false"
+        render "#{subdomain}/show"
+      end
     end
     
     # @campaigns = current_user.campaigns
