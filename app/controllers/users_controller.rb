@@ -24,7 +24,7 @@ class UsersController < ApplicationController
       if @app.nil?
         forbid
       else
-        @app.run(@user)
+        @app.run(@user)        
         @app.tweet if params[:just_created].present? && params[:just_created] == "true"
         @must_show_social_buttons = params[:just_created].present? && params[:just_created] == "false"
         render "#{subdomain}/show"

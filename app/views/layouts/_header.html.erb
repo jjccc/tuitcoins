@@ -2,11 +2,19 @@
   <div class="col-lg-12 no-horizontal-padding">
     <div class="col-lg-5 logo">
       <div class="row">
-        <a alt="tuitcoins.com" title="tuitcoins.com" class="logo" href="<%= root_path %>">tuitcoins.com</a>
+        <% if @app %>
+          <a alt="<%= @app.subdomain.capitalize %>" title="<%= @app.subdomain.capitalize %>" class="logo" href="<%= user_path(@app.user.id, {:just_created => false}) %>">
+            <%= @app.subdomain.capitalize %>
+          </a>
+        <% else %>
+          <a alt="tuitcoins.com" title="tuitcoins.com" class="logo" href="<%= root_path %>">tuitcoins.com</a>
+        <% end %>
       </div>
-      <div class="row claim">
-        Saca partido a tu timeline
-      </div>
+      <% unless @app %>
+        <div class="row claim">
+          Saca partido a tu timeline
+        </div>
+      <% end %>
     </div>
     <div class="col-lg-7 no-horizontal-padding main-bar">
       <ul class="nav nav-pills no-horizontal-margin pull-right">

@@ -57,7 +57,7 @@ class Numberaffinity < App
                                           calculate_user_number(follower[0]))
       end
     rescue Twitter::Error::TooManyRequests => error
-      raise error.as_json.inspect
+      self.has_twitter_error = true
     end
     
     followers_list.sort{ |a, b| a.value <=> b.value }
