@@ -1,10 +1,12 @@
 class SessionsController < ApplicationController
 
   def numberaffinity
+    @app_name = "numberaffinity"
     render :layout => "login"
   end
   
   def cloudtag
+    @app_name = "cloudtag"
     render :layout => "login"
   end
   

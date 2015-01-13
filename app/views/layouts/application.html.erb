@@ -1,21 +1,20 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Tuitcoins</title>
-  <%= include_gon %>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-
-<html lang="en">
+<html lang="es">
   <head>
+    <%= include_gon %>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Dante Alcócer Campos, Juan José Cano-Cortés Cartagena">
     
-    <title>Tuitcoins. Saca rendimiento a tu timeline.</title>
+    <% if @app %>
+      <title><%= @app.subdomain.capitalize %></title>
+    <% else %>
+      <title>Tuitcoins. Saca rendimiento a tu timeline.</title>
+    <% end %>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -30,7 +29,7 @@
       <%= yield %>
       
       <div class="footer no-horizontal-padding">
-        <p>&copy; tuitcoins 2014</p>
+        <p>&copy; <%= @app.nil? ? "tuitcoins" : @app.subdomain %> 2015</p>
       </div>
     </div>
     
