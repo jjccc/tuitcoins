@@ -290,10 +290,6 @@ DocumentRoot #{File.join(deploy_to, 'current', 'public')}
     system "rsync -vr --exclude='.DS_Store' config/initializers/secret_token.rb #{user}@#{remote_host}:#{release_path}/config/initializers/"
   end
   
-  task :twitter, :role => :app do
-    system "rsync -vr --exclude='.DS_Store' config/initializers/000_twitter.rb #{user}@#{remote_host}:#{release_path}/config/initializers/"
-  end
-  
   task :credential, :role => :app do
     system "rsync -vr --exclude='.DS_Store' config/initializers/credential.rb #{user}@#{remote_host}:#{release_path}/config/initializers/"
   end
@@ -303,7 +299,7 @@ end
 # Callbacks
 before :deploy, 'deploy:delayed_job:stop'
 after 'deploy:setup', 'deploy:setup_shared_path'
-after 'deploy:finalize_update', 'deploy:db:sync_yaml', 'deploy:secret_token', 'deploy:twitter', 'deploy:credential', 'deploy:setup_symlinks'
+after 'deploy:finalize_update', 'deploy:db:sync_yaml', 'deploy:secret_token', 'deploy:credential', 'deploy:setup_symlinks'
 after 'deploy:finalize_update', 'deploy:db:migrate', "deploy:precompile"
 after 'deploy:create_symlink', "deploy:tmp_permissions"
 after :deploy, "deploy:delayed_job:start"
