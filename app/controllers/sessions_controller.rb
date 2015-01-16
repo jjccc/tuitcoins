@@ -11,13 +11,9 @@ class SessionsController < ApplicationController
   end
   
   def destroy
-    if current_user.nil?
-      forbid
-    else
-      landing_view = current_user.app.subdomain
-      session[:user_id] = nil
-      render landing_view, :layout => "login"
-    end
+    landing_view = current_user.app.subdomain
+    session[:user_id] = nil
+    render landing_view, :layout => "login"
   end
   
   def callback
