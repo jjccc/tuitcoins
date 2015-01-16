@@ -108,7 +108,7 @@ class Numberaffinity < App
       end
       tweet += affined.map{ |x| "@#{x.nick}" } * " "
     end
-    tweet += " Calcúlalo http://tuitcoins.com/numberaffinity"
+    tweet += " Calcúlalo http://appsgratis.info/numberaffinity"
   end
   
 end
