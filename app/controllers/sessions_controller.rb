@@ -11,6 +11,7 @@ class SessionsController < ApplicationController
   end
   
   def destroy
+    @app_name = params[:app]
     landing_view = current_user.app.subdomain
     session[:user_id] = nil
     render landing_view, :layout => "login"

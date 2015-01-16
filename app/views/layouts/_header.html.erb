@@ -33,7 +33,7 @@
           </li>
         <% else %>
           <li>
-            <a alt="Salir" title="Salir" href="<%= logout_path %>">Salir</a><br>        
+            <a alt="Salir" title="Salir" href="<%= logout_path({:app => @app.subdomain}) %>">Salir</a><br>        
           </li>
         <% end %>
       </ul>
