@@ -18,9 +18,9 @@
     </div>
     <div class="col-lg-7 no-horizontal-padding main-bar">
       <ul class="nav nav-pills no-horizontal-margin pull-right">
-        <% if session[:user_id].blank? %>
+        <% if @is_admin %>
           <li class="<%= "active" if params[:controller] == "users" %>">
-            <a alt="Usuarios" title="Usuarios" href="<%= users_path %>">Usuarios</a><br>        
+            <a alt="Usuarios" title="Usuarios" href="<%= dashboards_path %>">Dashboard</a><br>        
           </li>
           <li class="<%= "active" if params[:controller] == "categories" %>">
             <a alt="Categorías" title="Categorías" href="<%= categories_path %>">Categorías</a><br>        
