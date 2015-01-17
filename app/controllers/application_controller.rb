@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   def authenticate
     if user_not_granted? 
       authenticate_or_request_with_http_basic do |user_name, password|
+        @is_admin = true
         user_name == Tuitcoins::Application.config.http_user && password == Tuitcoins::Application.config.http_password
       end
     end
@@ -22,7 +23,7 @@ class ApplicationController < ActionController::Base
   private 
   
   def user_not_granted?
-    ["dashboards", "campaigns"].include?(params[:controller])
+    ["dashboards", "campaigns", "plans", "categories"].include?(params[:controller])
   end
 
   
