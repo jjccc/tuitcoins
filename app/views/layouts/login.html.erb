@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="es">
+<html class="fullimage" lang="es">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Saca partido a tu timeline">
     <meta name="author" content="Dante Alcócer y Juan José Cano-Cortés Cartagena">
+    <%= stylesheet_link_tag "app" %>
     <link rel="icon" href="../../favicon.ico">
 
     <title><%= @app_name.capitalize %></title>
@@ -19,10 +20,7 @@
     <![endif]-->
   </head>
 
-  <body>
-
+  <body class="fullimage">
     <%= yield %>
-
-    
   </body>
 </html>

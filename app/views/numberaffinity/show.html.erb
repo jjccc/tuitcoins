@@ -1,7 +1,7 @@
 <% if @app.has_twitter_error %>
   <div class="row jumbotron no-horizontal-margin">
     <div class="row">
-      <div class="col-md-12">    
+      <div class="col-xs-12">    
         <center>
           <h4>En estos momentos no es posible acceder a la información de tu cuenta de Twitter.</h4>
           <h4>Por favor, inténtalo dentro de unos minutos.</h4>
@@ -12,13 +12,13 @@
 <% else %>
   <div class="row jumbotron no-horizontal-margin">
     <div class="row">
-      <div class="col-md-6">    
+      <div class="col-xs-6">    
         <center>
           <h4>Número mágico</h4>
           <h1><%= number_with_delimiter(@app.user_number) %></h1>        
         </center>
       </div>
-      <div class="col-md-6">
+      <div class="col-xs-6">
         <center>
           <h4>Grado de afinidad</h4>
           <h1><%= number_with_delimiter(@app.affinity) %>%</h1>
@@ -41,15 +41,15 @@
 
     <% @app.affined_followers.each do |follower| %>
       <div class="row no-horizontal-margin">
-        <div class="col-md-1">
+        <div class="col-xs-1">
           <img class="profile" src="<%= follower.picture %>">
         </div>
-        <div class="col-md-5">
+        <div class="col-xs-5">
           <a href="<%= "http://twitter.com/#{follower.nick}" %>" target="_blank">
             <h4><%= follower.name %></h4>
           </a>
         </div>
-        <div class="col-md-3 right">
+        <div class="col-xs-3 right">
           <h4><%= number_with_delimiter(follower.value) %></h4>
         </div>
       </div>
