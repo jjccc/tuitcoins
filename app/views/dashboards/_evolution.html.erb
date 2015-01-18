@@ -1,0 +1,64 @@
+<div id="evolution" class="row no-horizontal-margin">
+</div>
+
+<script>
+  $(function () { 
+    Highcharts.setOptions({
+      lang: {
+        months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 
+          'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        weekdays: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+        shortMonths: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+        decimalPoint: ',',
+        thousandsSep: '.',
+        resetZoom: 'Sin zoom'
+      }
+    });
+    $('#evolution').highcharts({
+      chart: {
+        type: 'line',
+        zoomType: 'x',
+      },
+      title: {
+        text: null
+      },
+      xAxis: {
+        categories: [<%= (evolution.data.keys.map{ |x| "\"#{x}\"" } * ",").html_safe %>],        
+      },
+      yAxis: {
+        title: {
+          text: null
+        },
+        min: 0,
+        plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]           
+      },
+      legend: {
+        enabled: false
+      },
+      tooltip: {
+        useHTML: true,
+        formatter: function() {
+          s = '<b>' + this.series.name + '</b><br/>' + Highcharts.dateFormat('%d/%m/%Y %H:%M:%S', this.x) + '<br/><div class="tooltip-chart">' + this.y + '</div>';
+          if (this.point.comment !== null){
+            s += '<br><p class="tooltip-comment">' + this.point.comment + '</p>';  
+          }
+          return s;                
+        },
+        style: {
+          color: '#505050'
+        }
+      },
+      credits: {
+        enabled: false
+      },
+      series: [{
+        name: 'Usuarios',
+        data: [<%= (evolution.data.values * ",").html_safe %>]
+      }]
+    });
+  });
+</script>
