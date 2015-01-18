@@ -18,8 +18,11 @@
       </center>
     </div>
   </div>
+  
   <%= render @apps %>
 </div>
+
+<%= render :partial => "dashboards/evolution", :locals => {:evolution => @evolution} %>
 
 <%= render @users %>
 

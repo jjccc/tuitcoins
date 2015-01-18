@@ -15,3 +15,4 @@
 //= require jquery_ujs
 //= require js-routes
 //= require bootstrap.min
+//= require highcharts
