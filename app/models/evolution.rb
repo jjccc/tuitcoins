@@ -22,7 +22,7 @@ class Evolution
       self.daily_ocurrences[(origin_date + i.days).strftime("%d/%m")] = ocurrences
       self.accumulated_ocurrences[(origin_date + i.days).strftime("%d/%m")] = ocurrences + accumulated
       self.followers[(origin_date + i.days).strftime("%d/%m")] = User.where("created_at >= ?", origin_date).
-                                                                      where("created_at <= ?", origin_date + i.days).
+                                                                      where("created_at < ?", origin_date + (i + 1).days).
                                                                       sum(:followers)
       accumulated += ocurrences
     end
