@@ -23,7 +23,7 @@
         text: null
       },
       xAxis: {
-        categories: [<%= (evolution.data.keys.map{ |x| "\"#{x}\"" } * ",").html_safe %>],        
+        categories: [<%= (evolution.days.map{ |x| "\"#{x}\"" } * ",").html_safe %>],        
       },
       yAxis: {
         title: {
@@ -37,15 +37,15 @@
             }]           
       },
       legend: {
-        enabled: false
+        layout: 'horizontal',
+        align: 'center',
+        verticalAlign: 'bottom',
+        borderWidth: 0
       },
       tooltip: {
         useHTML: true,
         formatter: function() {
-          s = '<b>' + this.series.name + '</b><br/>' + Highcharts.dateFormat('%d/%m/%Y %H:%M:%S', this.x) + '<br/><div class="tooltip-chart">' + this.y + '</div>';
-          if (this.point.comment !== null){
-            s += '<br><p class="tooltip-comment">' + this.point.comment + '</p>';  
-          }
+          s = '<b>' + this.series.name + '</b><br/>' + this.x + '<br/><div class="tooltip-chart">' + this.y + '</div>';
           return s;                
         },
         style: {
@@ -56,8 +56,16 @@
         enabled: false
       },
       series: [{
-        name: 'Usuarios',
-        data: [<%= (evolution.data.values * ",").html_safe %>]
+        name: 'Usuarios diarios',
+        data: [<%= (evolution.daily_ocurrences.values * ",").html_safe %>]
+      },
+      {
+        name: 'Usuarios acumulados',
+        data: [<%= (evolution.accumulated_ocurrences.values * ",").html_safe %>]
+      },
+      {
+        name: 'Audiencia acumulada',
+        data: [<%= (evolution.followers.values * ",").html_safe %>]
       }]
     });
   });
