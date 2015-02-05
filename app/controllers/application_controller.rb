@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
   private 
   
   def user_not_granted?
-    ["dashboards", "campaigns", "plans", "categories"].include?(params[:controller])
+    ["dashboards", "campaigns", "plans", "categories", "configurations"].include?(params[:controller])
   end
 
   

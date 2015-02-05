@@ -1,6 +1,6 @@
 <div class="header no-horizontal-margin">
   <div class="col-lg-12 no-horizontal-padding">
-    <div class="col-lg-5 logo">
+    <div class="col-lg-4 logo">
       <div class="row">
         <% if @app %>
           <a alt="<%= @app.subdomain.capitalize %>" title="<%= @app.subdomain.capitalize %>" class="logo" href="<%= user_path(@app.user.id, {:just_created => false}) %>">
@@ -16,7 +16,7 @@
         </div>
       <% end %>
     </div>
-    <div class="col-lg-7 no-horizontal-padding main-bar">
+    <div class="col-lg-8 no-horizontal-padding main-bar">
       <ul class="nav nav-pills no-horizontal-margin pull-right">
         <% if @is_admin %>
           <li class="<%= "active" if params[:controller] == "users" %>">
@@ -30,6 +30,11 @@
           </li>
           <li class="<%= "active" if params[:controller] == "campaigns" %>">
             <a alt="Campañas" title="Campañas" href="<%= campaigns_path %>">Campañas</a>
+          </li>
+          <li>
+            <a title="Configuración" alt="Configuración" type="button" class="btn btn-sm btn-default" href="<%= edit_configuration_path(Configuration.find_by_name("TUIT_TEXT").id) %>">
+              <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+            </a>
           </li>
         <% else %>
           <li>

@@ -9,6 +9,8 @@ Tuitcoins::Application.routes.draw do
   
   resources :dashboards, :only => [:index]
   
+  resources :configurations, :only => [:edit, :update]
+  
   match "/auth/:provider/callback" => "sessions#callback"
   match "/numberaffinity" => "sessions#numberaffinity", :as => "numberaffinity"
   match "/cloudtag" => "sessions#cloudtag", :as => "cloudtag"

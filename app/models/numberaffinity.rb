@@ -10,7 +10,7 @@ class Numberaffinity < App
     @position = calculate_position
     @affinity = distance(@followers.count + 1)
     @affined_followers = calculate_most_affined(10)
-    @result_tweet = calculate_result_tweet
+    @result_tweet = calculate_result_tweet    
   end
   
   private
@@ -97,18 +97,25 @@ class Numberaffinity < App
     @followers.blank? ? [] : @followers[(range_min_position - 1)..(range_max_position - 1)]
   end
   
-  def calculate_result_tweet
-    affined = calculate_most_affined(3)
-    tweet = "Número mágico: #{@user_number}. Afinidad: #{@affinity}%."
-    unless affined.blank?
-      if affined.count > 1
-        tweet += " Más afines: "
-      else
-        tweet += " Más afín: "
-      end
-      tweet += affined.map{ |x| "@#{x.nick}" } * " "
-    end
-    tweet += " Calcúlalo http://appsgratis.info/numberaffinity"
+  def calculate_result_tweet        
+    tweet = ::Configuration.find_by_name("TUIT_TEXT").value
+    
+    # Reemplazamos las ocurrencias de {result} que son los valores que devuelve la aplicación.
+    results = [@user_number.to_s, @affinity.to_s]    
+    results.each{ |r| tweet.sub!("{result}", r) }
+    
+    # Reemplazamos las ocurrencias de {user} por followers del usuario.
+    users_count = tweet.scan("{user}").count
+    affined = calculate_most_affined(users_count)
+    affined.each{ |a| tweet.sub!("{user}", "@#{a.nick}") }
+    
+    # Eliminamos los sobrantes si los followers son menores que los solicitados.
+    tweet.gsub!("{user}", "")
+        
+    # Reemplazamos la ocurrencia de {url}
+    tweet.sub!("{url}", "http://bit.ly/16J1IxC") 
+    
+    tweet
   end
   
 end

@@ -1,0 +1,15 @@
+<%= form_for(@configuration, :url => @form_path, :html => { :role => "form"}) do |f| %>   
+  <%= f.hidden_field :name %>
+  <div class="col-md-12 no-horizontal-margin">
+    <div id="form-group-value" class="form-group no-horizontal-padding">
+      <%= f.text_area :value, :size => "60x4", :maxlength => 240, :class => "form-control input-lg", :placeholder => "Texto del tuit" %>
+    </div>
+  </div>
+
+  <div class="col-md-12 no-horizontal-margin">
+    <div class="form-group no-horizontal-padding">
+      <button type="submit" class="btn btn-primary btn-lg">Guardar</button>              
+      <a class="btn btn-warning btn-lg" href="<%= root_path %>">Cancelar</a>
+    </div>
+  </div>
+<% end %>
