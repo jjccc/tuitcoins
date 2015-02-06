@@ -1,3 +1,5 @@
+<%= javascript_include_tag "apps/numberaffinity" %>
+
 <% if @app.has_twitter_error %>
   <div class="row jumbotron no-horizontal-margin">
     <div class="row">
@@ -29,7 +31,7 @@
 
   <% if @must_show_social_buttons %>
     <div class="row no-horizontal-margin">
-      <a href="#" class="btn btn-primary btn-lg btn-block btn-cta" remote="true">Comparte el resultado en Twitter</a>
+      <a id="tweet-button" href="#" class="btn btn-primary btn-lg btn-block btn-cta" remote="true">Comparte el resultado en Twitter</a>
     </div>
     <br><br>
   <% end %>

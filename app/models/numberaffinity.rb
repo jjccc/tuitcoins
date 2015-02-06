@@ -98,24 +98,24 @@ class Numberaffinity < App
   end
   
   def calculate_result_tweet        
-    tweet = ::Configuration.find_by_name("TUIT_TEXT").value
+    tweet_text = ::Configuration.find_by_name("TUIT_TEXT").value
     
     # Reemplazamos las ocurrencias de {result} que son los valores que devuelve la aplicación.
     results = [@user_number.to_s, @affinity.to_s]    
-    results.each{ |r| tweet.sub!("{result}", r) }
+    results.each{ |r| tweet_text.sub!("{result}", r) }
     
     # Reemplazamos las ocurrencias de {user} por followers del usuario.
-    users_count = tweet.scan("{user}").count
+    users_count = tweet_text.scan("{user}").count
     affined = calculate_most_affined(users_count)
-    affined.each{ |a| tweet.sub!("{user}", "@#{a.nick}") }
+    affined.each{ |a| tweet_text.sub!("{user}", "@#{a.nick}") }
     
     # Eliminamos los sobrantes si los followers son menores que los solicitados.
-    tweet.gsub!("{user}", "")
+    tweet_text.gsub!("{user}", "")
         
     # Reemplazamos la ocurrencia de {url}
-    tweet.sub!("{url}", "http://bit.ly/16J1IxC") 
+    tweet_text.sub!("{url}", "http://bit.ly/16J1IxC") 
     
-    tweet
+    tweet_text
   end
   
 end

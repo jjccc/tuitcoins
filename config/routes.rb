@@ -15,6 +15,7 @@ Tuitcoins::Application.routes.draw do
   match "/numberaffinity" => "sessions#numberaffinity", :as => "numberaffinity"
   match "/cloudtag" => "sessions#cloudtag", :as => "cloudtag"
   match "/logout" => "sessions#destroy", :as => "logout"
+  match "/users/:id/tweet" => "users#tweet", :as => "user_tweet", :via => [:post], :format => :json
 
   root :to => 'dashboards#index'
 end
