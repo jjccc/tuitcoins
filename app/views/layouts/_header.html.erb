@@ -32,9 +32,7 @@
             <a alt="Campañas" title="Campañas" href="<%= campaigns_path %>">Campañas</a>
           </li>
           <li>
-            <a title="Configuración" alt="Configuración" type="button" class="btn btn-sm btn-default" href="<%= edit_configuration_path(Configuration.find_by_name("TUIT_TEXT").id) %>">
-              <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-            </a>
+            <%= render "layouts/customize_button" %>            
           </li>
         <% else %>
           <li>

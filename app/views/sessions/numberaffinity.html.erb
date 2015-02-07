@@ -5,10 +5,10 @@
       <div class="inner cover">
         <h1 class="cover-heading white">NUMBERAFFINITY.</h1>
 
-        <p class="lead white">Descubre el grado de compatibilidad numerológica con tus seguidores.</p>
+        <p class="lead white"><%= Configuration.find_by_name("LANDING_CLAIM").value %></p>
 
         <p class="lead">
-          <%= link_to "Acceder GRATIS con Twitter", "/auth/twitter?app=numberaffinity", :class => "btn btn-lg btn-info" %>
+          <%= link_to Configuration.find_by_name("LANDING_CALL_TO_ACTION").value, "/auth/twitter?app=numberaffinity", :class => "btn btn-lg btn-info" %>
         </p>
       </div>
   

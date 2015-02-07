@@ -1,0 +1,10 @@
+<div class="btn-group">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+    <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="<%= edit_configuration_path(Configuration.find_by_name("TUIT_TEXT").id) %>">Texto del tuit de resultado</a></li>
+    <li><a href="<%= edit_configuration_path(Configuration.find_by_name("LANDING_CLAIM").id) %>">Texto de la landing page</a></li>
+    <li><a href="<%= edit_configuration_path(Configuration.find_by_name("LANDING_CALL_TO_ACTION").id) %>">Texto del call-to-action de la landing page</a></li>
+  </ul>
+</div>
