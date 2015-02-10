@@ -22,7 +22,7 @@ a:hover {
 
 .fullimage{
 /*css for full size background image*/
-  background: url(/assets/numberaffinity1.jpg) no-repeat center center fixed; 
+  background: url(/assets/numberaffinity.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -34,6 +34,22 @@ a:hover {
   text-align: center;
   text-shadow: 0 1px 3px rgba(0,0,0,.5);
  
+}
+
+.white-background{
+  background-color: #ffffff;
+}
+
+.numberaffinity{
+/*css for full size background image*/
+  background: url(/assets/app_numberaffinity.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  
+  height: 100%;
+  background-color: #fff;
 }
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
@@ -61,6 +77,10 @@ a:hover {
 
 .white{
   color: #fff;
+}
+
+.cover-heading{
+  color: #FFFFFF;
 }
 
 /*
