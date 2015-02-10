@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
     <%= include_gon %>
+    <%= favicon_link_tag unless @app.nil? %>
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
